@@ -6,7 +6,6 @@ description = "A async-io-aware structured logging crate for Rust"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/khonsulabs/sirlog"
 
-publish = false
 edition = "2018"
 keywords = ["log", "logging"]
 categories = ["development-tools::debugging"]
@@ -21,7 +20,6 @@ chrono = { version = "0.4", features = ["serde"] }
 flume = "0.10"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-serde_cbor = "0.11"
 async-trait = "0.1.38"
 futures = "0.3"
 tokio = { version = "1", default-features = false, features = ["macros", "io-std", "io-util"] }
