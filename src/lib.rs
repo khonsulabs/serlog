@@ -24,6 +24,9 @@ mod configuration;
 mod log;
 mod manager;
 
+#[cfg(feature = "tracing-adapter")]
+pub mod tracing;
+
 pub use self::{configuration::*, log::*, manager::*};
 
 mod macros;
