@@ -16,9 +16,9 @@ macro_rules! log {
 #[rustfmt::skip] // This macro confuses rustfmt and it tries to indent it with the inner lines very far to the right.
 macro_rules! make_level_log_macro {
     // Passing the $ as a token is the workaround to allow parsing the repeated expression https://github.com/rust-lang/rust/issues/35853
-    ($d:tt $name:ident, $level:ident) => {
-        /// logs a message with the appropriate log level
-        // Can't generate a good doc string: https://github.com/rust-lang/rust/issues/37903
+    ($d:tt $name:ident, $level:ident, $docs:literal) => {
+        
+        #[doc = $docs]
         #[macro_export]
         macro_rules! $name {
             ($message:expr) => {
@@ -31,11 +31,11 @@ macro_rules! make_level_log_macro {
     };
 }
 
-make_level_log_macro!($ error, Error);
-make_level_log_macro!($ warn, Warning);
-make_level_log_macro!($ info, Info);
-make_level_log_macro!($ debug, Debug);
-make_level_log_macro!($ trace, Trace);
+make_level_log_macro!($ error, Error, "logs a message with `Level::Error`");
+make_level_log_macro!($ warn, Warning, "logs a message with `Level::Warning`");
+make_level_log_macro!($ info, Info, "logs a message with `Level::Info`");
+make_level_log_macro!($ debug, Debug, "logs a message with `Level::Debug`");
+make_level_log_macro!($ trace, Trace, "logs a message with `Level::Trace`");
 
 #[tokio::test]
 async fn macro_tests() {
