@@ -39,9 +39,6 @@ jobs:
       - name: Run default features unit tests
         run: |
           cargo test
-      - name: Run tokio unit tests
-        run: |
-          cargo test --no-default-features --features="tokio-rt"
 
   coverage:
     runs-on: ubuntu-latest
