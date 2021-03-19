@@ -1,6 +1,6 @@
 [package]
 name = "sirlog"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["Jonathan Johnson <jon@khonsulabs.com>"]
 description = "A async-io-aware structured logging crate for Rust"
 license = "MIT OR Apache-2.0"

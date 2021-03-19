@@ -5,13 +5,17 @@ use tokio::sync::Mutex;
 
 use crate::{backend::Backend, Log};
 
+/// A memory-based log message backend. This is for use cases where you want to review the last X log messages.
 #[derive(Debug)]
 pub struct Memory {
+    /// The maximum number of entries to keep in memory
     pub max_entries: usize,
+    /// The storage for the backend. Locking this will block log entries from arriving, so you should only acquire the mutex lock for short operations.
     pub entries: Arc<Mutex<VecDeque<Log>>>,
 }
 
 impl Memory {
+    /// Create a new instance
     #[must_use]
     pub fn new(max_entries: usize) -> Self {
         Self {

@@ -11,6 +11,7 @@ trait AsyncWriter: AsyncWrite + Send + Sync + Debug + Unpin + 'static {}
 
 impl<T> AsyncWriter for T where T: AsyncWrite + Send + Sync + Debug + Unpin + 'static {}
 
+/// An IO-based backend, useful for outputting to files or pipes
 #[derive(Debug)]
 pub struct Os {
     err: Box<dyn AsyncWriter>,
@@ -18,6 +19,7 @@ pub struct Os {
 }
 
 impl Os {
+    /// Create an `Os` backend that sends `Level::Warning` or higher messages to `tokio::io::stderr()`, and all other messages to `tokio::io::stdout()`
     #[must_use]
     pub fn std() -> Self {
         Self {

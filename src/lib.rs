@@ -1,3 +1,5 @@
+//! a structured logging framework built with async-io in mind.
+
 #![forbid(unsafe_code)]
 #![warn(
     clippy::cargo,
@@ -6,7 +8,7 @@
     clippy::pedantic,
     future_incompatible,
     rust_2018_idioms,
-    // missing_docs
+    missing_docs
 )]
 #![cfg_attr(doc, warn(rustdoc))]
 #![allow(
@@ -19,6 +21,7 @@
     clippy::option_if_let_else,
 )]
 
+/// logging backends (destinations)
 pub mod backend;
 mod configuration;
 mod log;

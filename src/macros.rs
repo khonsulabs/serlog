@@ -1,3 +1,4 @@
+/// logs a single message at the level provided
 #[macro_export]
 macro_rules! log {
     ($level:expr, $message:expr) => {
@@ -16,6 +17,8 @@ macro_rules! log {
 macro_rules! make_level_log_macro {
     // Passing the $ as a token is the workaround to allow parsing the repeated expression https://github.com/rust-lang/rust/issues/35853
     ($d:tt $name:ident, $level:ident) => {
+        /// logs a message with the appropriate log level
+        // Can't generate a good doc string: https://github.com/rust-lang/rust/issues/37903
         #[macro_export]
         macro_rules! $name {
             ($message:expr) => {
